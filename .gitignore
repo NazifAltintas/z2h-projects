@@ -35,3 +35,4 @@ terraform.rc
 
 # Bunu yazarak git göndermek istemedigin dosyalari yazma sekli.
 *.pem  
+.terraform.lock.hcl

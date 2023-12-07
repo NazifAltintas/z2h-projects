@@ -185,14 +185,14 @@ resource "aws_instance" "node_exporter" {
   key_name = "${var.key_name}"
   availability_zone = "${var.region}${var.availability_zones[0]}"
   associate_public_ip_address = true
-  user_data = file("${var.user_data_file_nexp}")
+  user_data = file("user_data_nexp.sh")
   tags = {
     Name = "${var.name}-node_exporter"
   }
   
 }
 data "template_file" "user_data_template" {
-  template = file("${var.user_data_file_ps}")
+  template = file("user_data_ps.sh")
   vars = {
     private_ip_value = aws_instance.node_exporter.private_ip
   }
@@ -208,7 +208,7 @@ resource "aws_instance" "project1-ec2" {
   availability_zone = "${var.region}${var.availability_zones[0]}"
   associate_public_ip_address = true
   
- user_data = data.template_file.user_data_template.rendered
+  user_data = data.template_file.user_data_template.rendered
 
   tags = {
     Name = "${var.name}-prometheus_server"
