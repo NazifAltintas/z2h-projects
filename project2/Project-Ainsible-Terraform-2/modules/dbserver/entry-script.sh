@@ -4,4 +4,3 @@ sudo yum -y update
 
 # Upgrade installed packages
 sudo yum -y upgrade
-
